@@ -22,7 +22,7 @@
     "authors": [
         {
             "name": "isaiastech",
-            "email": "isaiasbatistapy@gmail.com"
+            "email": "enderecoEmail"
         }
     ],
     "minimum-stability": "stable",
