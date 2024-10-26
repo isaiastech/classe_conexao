@@ -16,3 +16,4 @@ composer.phar
 composer.json
 composer.lock
 teste.php
+.htaccess
