@@ -33,6 +33,22 @@ class Database
         }
     }
 
+    private function getParamTypes($params) {
+        $types = '';
+        foreach ($params as $param) {
+            if (is_int($param)) {
+                $types .= 'i';
+            } elseif (is_float($param)) {
+                $types .= 'd';
+            } elseif (is_string($param)) {
+                $types .= 's';
+            } else {
+                $types .= 'b'; // blob and unknown
+            }
+        }
+        return $types;
+    }
+
     public function getResultFromQuery($sql, $params = [])
     {
         // Prepara a consulta
@@ -44,7 +60,7 @@ class Database
         // Vincula os parâmetros, se houver
         if ($params) {
             // Cria um array com tipos dos parâmetros
-            $types = str_repeat('s', count($params)); // Assume que todos os parâmetros são strings
+            $types = $this->getParamTypes($params);
             $stmt->bind_param($types, ...$params);
         }
 
